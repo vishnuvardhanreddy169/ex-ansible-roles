@@ -21,13 +21,13 @@
     dest: /tmp/frontend.zip
 - name: extract the code
   ansible.builtin.unarchive:
-    src: /tmp/frontend.zip #by default 
+    src: /tmp/frontend.zip #by default ansible thinks this is in ansible server
     dest: /usr/share/nginx/html
     remote_src: yes
 - name: copy expense conf
   ansible.builtin.template:
     src: expense.conf.j2
-    dest: /etc/nginx/default.d/expense.
+    dest: /etc/nginx/default.d/expense.conf
 - name: restart nginx
   ansible.builtin.service:
     name: nginx
